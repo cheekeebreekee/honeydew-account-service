@@ -1,0 +1,22 @@
+Resources:
+  AccountsDynamoDbTable:
+    Type: "AWS::DynamoDB::Table"
+    DeletionPolicy: Retain
+    Properties:
+      BillingMode: "PAY_PER_REQUEST"
+      AttributeDefinitions:
+        - AttributeName: "id"
+          AttributeType: "S"
+        - AttributeName: "conversationId"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "id"
+          KeyType: "HASH"
+      GlobalSecondaryIndexes:
+        - IndexName: conversationIdIndex
+          KeySchema:
+            - AttributeName: conversationId
+              KeyType: "HASH"
+          Projection:
+            ProjectionType: "ALL"
+      TableName: ${self:provider.environment.ACCOUNTS_TABLE}
