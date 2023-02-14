@@ -19,4 +19,4 @@ Resources:
               KeyType: "HASH"
           Projection:
             ProjectionType: "ALL"
-      TableName: ${self:provider.environment.ACCOUNTS_TABLE}
+      TableName: ${file(./sls/variables.yml):${self:provider.stage}.ACCOUNTS_TABLE}

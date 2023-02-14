@@ -1,0 +1,6 @@
+test:
+  ACCOUNTS_TABLE: honeydew-account-service-table-test
+  ENVIRONMENT: TEST
+prod:
+  ACCOUNTS_TABLE: honeydew-account-service-table-prod
+  ENVIRONMENT: PRODUCTION

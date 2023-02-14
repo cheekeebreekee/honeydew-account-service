@@ -1,6 +1,6 @@
 service: honeydew-account-service
 
-frameworkVersion: ">=2.0.0"
+frameworkVersion: ">=3.1.0"
 
 provider:
   name: aws
@@ -10,9 +10,6 @@ provider:
   profile: ApiGatewayLambdaServiceUser
   timeout: 30
   lambdaHashingVersion: 20201221
-  environment:
-    ACCOUNTS_TABLE: ${self:service}-table-${self:provier.stage}
-    ENVIRONMENT: TEST
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -40,7 +37,7 @@ custom:
     keepOutputDirectory: true
   customDomain:
     domainName: "testapi.honeydewcare.com"
-    basePath: ""
+    basePath: "accounts"
     stage: ${self:provider.stage}
     createRoute53Record: true
 
